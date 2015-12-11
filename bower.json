@@ -1,0 +1,22 @@
+{
+  "name": "heading-helper",
+  "homepage": "https://github.com/LoicGoyet/heading-helper",
+  "authors": [
+    "Loïc Goyet <loic@appventus.com>"
+  ],
+  "description": "Sass libray to quickly manage headings on css",
+  "main": "heading-helper.scss",
+  "keywords": [
+    "sass",
+    "typography",
+    "heading"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
