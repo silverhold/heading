@@ -1,12 +1,45 @@
 @import 'parameters';
 @import 'functions';
 
+@if map-get($heading__all--block, line-height) {
+    .sass-flag {
+        height: 10px;
+    }
+}
+
 #{heading-helper__selector-all-generator()} {
     @each $property, $value in $heading__all--block {
+        #{$property}: $value;
         #{$property}: $value;
     }
 
     @if $heading__all--extend {
         @extend #{$heading__all--extend};
+    }
+}
+
+@each $index, $map in $heading--defintions {
+    #{heading-helper__selector-generator($index)},
+    #{heading-helper__selector-generator($index, '.')},
+    %h#{$index} {
+        @each $property, $value in $map {
+            #{$property}: $value;
+        }
+    }
+
+    @if $heading--responsive-breakpoint {
+        @each $breakpoint, $min-width in $heading--responsive-breakpoint {
+            #{heading-helper__selector-generator($index, '.', $breakpoint)} {
+                @if $min-width != 0 {
+                    @media (min-width: $min-width) {
+                        @each $property, $value in $map {
+                            #{$property}: $value;
+                        }
+                    }
+                } @else {
+                    @extend %h#{$index};
+                }
+            }
+        }
     }
 }

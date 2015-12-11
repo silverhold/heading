@@ -57,3 +57,74 @@ will compile into
 h1, h2, h3, h4, h5, h6, .selector {
   line-height: 1.3; }
 ```
+
+### Set rules to single headings
+In order to set specific rule to specific heading, just redefine the `$heading--definitions` as shown below (presenting the default value):
+```scss
+$heading--defintions: (
+    1: (
+        font-size: 36px,
+    ),
+    2: (
+        font-size: 30px,
+    ),
+    3: (
+        font-size: 24px,
+    ),
+    4: (
+        font-size: 18px,
+    ),
+    5: (
+        font-size: 14px,
+    ),
+    6: (
+        font-size: 12px,
+    ),
+) !default;
+```
+
+this will generate for example :
+```css
+h1,
+.h1 {
+    font-size: 36px;
+}
+
+h2,
+.h2 {
+    font-size: 30px;
+}
+
+h3,
+.h3 {
+    font-size: 24px;
+}
+
+h4,
+.h4 {
+    font-size: 18px;
+}
+
+h5,
+.h5 {
+    font-size: 14px;
+}
+
+h6,
+.h6 {
+    font-size: 12px;
+}
+```
+
+
+### Generate responsive classes
+If you want to generate for example a class `.h1--sm` with as media querie `@media (min-width: 768px)` you can set the variable `$heading--responsive-breakpoint` which is a list with as key the prefix ('--sm') and as value the min-width media querie wanted (768px). Here is the default value :
+```sass
+$heading--responsive-breakpoint: (
+    '--xs': 0,
+    '--sm': 768px,
+    '--md': 992px,
+    '--lg': 1200px,
+);
+```
+If you want to avoid responsive classes generations, just turn `$heading--responsive-breakpoint` as `false`.

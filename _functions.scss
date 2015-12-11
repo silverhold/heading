@@ -1,5 +1,5 @@
 @function heading-helper__selector-generator($i, $prefix: null, $suffix: null) {
-    @return '.h#{$prefix}#{$i}#{$suffix}';
+    @return #{$prefix}#{'h'}#{$i}#{$suffix};
 }
 
 @function heading-helper__selector-all-generator() {
