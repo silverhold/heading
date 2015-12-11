@@ -1,0 +1,12 @@
+@function heading-helper__selector-generator($i, $prefix: null, $suffix: null) {
+    @return '.h#{$prefix}#{$i}#{$suffix}';
+}
+
+@function heading-helper__selector-all-generator() {
+    $selector: '';
+    @for $i from 1 through 6 {
+        $selector: $selector + 'h#{$i}' + ', ';
+    }
+
+    @return $selector + '%headings';
+}
