@@ -1,0 +1,25 @@
+<section>
+    <h2>Heading helper</h2>
+
+    <p>For each heading you can use directly the html tag or the class equivalent to the html tag with the style you want to reproduce</p>
+
+    <div class="heading-row">
+        {% for index in 1..6 %}
+            <div class="heading-row__item">
+                <h{{ index }}>Heading {{ index }}</h{{ index }}>
+
+                <p>
+                    <code>&lt;h{{ index }}&gt;Heading {{ index }}&lt;/h{{ index }}&gt;</code> or
+                    <code>&lt;h1 class="h{{ index }}"&gt;Heading {{ index }}&lt;/h1&gt;</code>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3>Responsive headings</h3>
+
+    <p>A heading can be responsive. You can assign an heading style for each breakpoint, with the mobile-first philosophy.</p>
+    <p>For example the following heading look like a h4 on xs, a h3 on sm, a h2 on md and h1 on lg</p>
+
+    <h1 class="h4--xs h3--sm h2--md h1--lg">This heading is responsive</h1>
+</section>

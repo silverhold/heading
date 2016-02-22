@@ -1,0 +1,13 @@
+{
+    "stylevendor": [
+        "@bower/heading-helper/heading-helper.scss"
+    ],
+
+    "stylegui": [
+        "@bower/heading-helper/gui.scss"
+    ],
+
+    "gui": [
+        "@bower/heading-helper/gui.html.twig"
+    ]
+}
