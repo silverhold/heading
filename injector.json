@@ -1,13 +1,17 @@
 {
+    "styleutils": [
+        "@bower/responsive-helper/responsive-helper.scss"
+    ],
+
     "stylevendors": [
         "@bower/heading-helper/heading-helper.scss"
     ],
 
     "stylegui": [
-        "@bower/heading-helper/gui.scss"
+        "@bower/heading-helper/gui/gui.scss"
     ],
 
     "gui": [
-        "@bower/heading-helper/gui.html.twig"
+        "@bower/heading-helper/gui/gui.html.twig"
     ]
 }

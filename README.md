@@ -9,6 +9,7 @@ $ bower install heading-helper
 
 
 ## Usage
+Include to your scss stylesheet the `heading-helper.scss` file. You also need to include before `heading-helper.scss` the `responsive-helper.scss` file from the [responsive-helper library](https://github.com/LoicGoyet/responsive-helper) if you want to enable the responsive helper class generation.
 
 ### Set Common property to all headings
 You can easily add couple property/values to the following selector :
@@ -124,13 +125,10 @@ h6,
 
 
 ### Generate responsive classes
-If you want to generate for example a class `.h1--sm` with as media querie `@media (min-width: 768px)` you can set the variable `$heading--responsive-breakpoint` which is a list with as key the prefix ('--sm') and as value the min-width media querie wanted (768px). Here is the default value :
-```sass
-$heading--responsive-breakpoint: (
-    '--xs': 0,
-    '--sm': 768px,
-    '--md': 992px,
-    '--lg': 1200px,
-);
+You can also make responsive headings by using the classes `.hx--y`. `x` being the heading level you want to use and `y` the breakpoint you want to use (with the mobile-first philosophy). The breakpoints available are setted with the [responsive-helper library](https://github.com/LoicGoyet/responsive-helper) that you have normaly included into your sass file before the `heading-helper.scss` file
+
+```html
+<h1 class="h5--xs h4--sm h3--md h2--lg h1--xl">This heading is responsive</h1>
 ```
-If you want to avoid responsive classes generations, just turn `$heading--responsive-breakpoint` as `false`.
+
+If you want to avoid responsive classes generations, just turn `$heading-responsive` to `false`.

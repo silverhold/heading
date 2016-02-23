@@ -1,15 +1,8 @@
-@import 'parameters';
-@import 'functions';
-
-@if map-get($heading__all--block, line-height) {
-    .sass-flag {
-        height: 10px;
-    }
-}
+@import 'partials/parameters';
+@import 'partials/functions';
 
 #{heading-helper__selector-all-generator()} {
     @each $property, $value in $heading__all--block {
-        #{$property}: $value;
         #{$property}: $value;
     }
 
@@ -29,18 +22,15 @@
     }
 }
 
-@if $heading--responsive-breakpoint {
-    @each $breakpoint, $min-width in $heading--responsive-breakpoint {
+@if $heading-responsive {
+    @each $breakpoint_key, $breakpoint_value in $breakpoints {
         @each $index, $map in $heading--defintions {
-            #{heading-helper__selector-generator($index, '.', $breakpoint)} {
-                @if $min-width != 0 {
-                    @media (min-width: $min-width) {
-                        @each $property, $value in $map {
-                            #{$property}: $value;
-                        }
+            #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)},
+            %h#{$index}--#{$breakpoint_key} {
+                @include media-query($breakpoint_key, 'mobile-first') {
+                    @each $property, $value in $map {
+                        #{$property}: $value;
                     }
-                } @else {
-                    @extend %h#{$index};
                 }
             }
         }
