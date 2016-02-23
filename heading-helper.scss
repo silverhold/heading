@@ -1,12 +1,6 @@
 @import 'parameters';
 @import 'functions';
 
-@if map-get($heading__all--block, line-height) {
-    .sass-flag {
-        height: 10px;
-    }
-}
-
 #{heading-helper__selector-all-generator()} {
     @each $property, $value in $heading__all--block {
         #{$property}: $value;
@@ -31,7 +25,8 @@
 @if $heading-responsive {
     @each $breakpoint_key, $breakpoint_value in $breakpoints {
         @each $index, $map in $heading--defintions {
-            #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)} {
+            #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)},
+            %h#{$index}--#{$breakpoint_key} {
                 @include media-query($breakpoint_key, 'mobile-first') {
                     @each $property, $value in $map {
                         #{$property}: $value;
