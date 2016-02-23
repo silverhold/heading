@@ -10,7 +10,6 @@
 #{heading-helper__selector-all-generator()} {
     @each $property, $value in $heading__all--block {
         #{$property}: $value;
-        #{$property}: $value;
     }
 
     @if $heading__all--extend {
