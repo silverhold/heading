@@ -1,5 +1,5 @@
-@import 'parameters';
-@import 'functions';
+@import 'partials/parameters';
+@import 'partials/functions';
 
 #{heading-helper__selector-all-generator()} {
     @each $property, $value in $heading__all--block {
