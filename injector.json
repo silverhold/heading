@@ -1,4 +1,8 @@
 {
+    "styleutils": [
+        "@bower/responsive-helper/responsive-helper.scss"
+    ],
+
     "stylevendors": [
         "@bower/heading-helper/heading-helper.scss"
     ],
