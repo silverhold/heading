@@ -29,18 +29,14 @@
     }
 }
 
-@if $heading--responsive-breakpoint {
-    @each $breakpoint, $min-width in $heading--responsive-breakpoint {
+@if $heading-responsive {
+    @each $breakpoint_key, $breakpoint_value in $breakpoints {
         @each $index, $map in $heading--defintions {
-            #{heading-helper__selector-generator($index, '.', $breakpoint)} {
-                @if $min-width != 0 {
-                    @media (min-width: $min-width) {
-                        @each $property, $value in $map {
-                            #{$property}: $value;
-                        }
+            #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)} {
+                @include media-query($breakpoint_key, 'mobile-first') {
+                    @each $property, $value in $map {
+                        #{$property}: $value;
                     }
-                } @else {
-                    @extend %h#{$index};
                 }
             }
         }
