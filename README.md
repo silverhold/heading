@@ -132,3 +132,22 @@ You can also make responsive headings by using the classes `.hx--y`. `x` being t
 ```
 
 If you want to avoid responsive classes generations, just turn `$heading-responsive` to `false`.
+
+
+### The heading mixin
+You can use the `@mixin heading($lvl)` to apply to your selector all the declarations setted to all the headings and to the heading level passed as parameter.
+
+```scss
+.label {
+    @include heading(6);
+}
+```
+
+will generate
+
+```css
+.label {
+    line-height: 1.3;
+    font-size: 12px;
+}
+```
