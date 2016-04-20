@@ -1,10 +1,9 @@
 @import 'partials/parameters';
 @import 'partials/functions';
+@import 'partials/mixins';
 
 #{heading-helper__selector-all-generator()} {
-    @each $property, $value in $heading__all--block {
-        #{$property}: $value;
-    }
+    @include getAllHeadingDeclaration;
 
     @if $heading__all--extend {
         @extend #{$heading__all--extend};
@@ -16,9 +15,7 @@
     #{heading-helper__selector-generator($index)},
     #{heading-helper__selector-generator($index, '.')},
     %h#{$index} {
-        @each $property, $value in $map {
-            #{$property}: $value;
-        }
+        @include generateDeclarations($map);
     }
 }
 
@@ -28,9 +25,7 @@
             #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)},
             %h#{$index}--#{$breakpoint_key} {
                 @include media-query($breakpoint_key, 'mobile-first') {
-                    @each $property, $value in $map {
-                        #{$property}: $value;
-                    }
+                    @include generateDeclarations($map);
                 }
             }
         }

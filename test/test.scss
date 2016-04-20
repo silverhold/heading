@@ -4,5 +4,12 @@
  * `sass --watch test/test.scss:test/heading-helper.css`
  */
 
+$hidden-helpers: false;
+$visible-helpers: false;
 @import '../bower_components/responsive-helper/responsive-helper';
 @import '../heading-helper';
+
+
+.test {
+    @include heading(1);
+}

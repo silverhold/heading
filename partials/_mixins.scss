@@ -1,0 +1,15 @@
+@mixin generateDeclarations($map) {
+    @each $property, $value in $map {
+        #{$property}: $value;
+    }
+}
+
+@mixin getAllHeadingDeclaration {
+    @include generateDeclarations($heading__all--block);
+}
+
+@mixin heading($lvl) {
+    $lvl-declarations: map-get($heading--defintions, $lvl);
+    @include getAllHeadingDeclaration;
+    @include generateDeclarations($lvl-declarations);
+}
