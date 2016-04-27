@@ -1,10 +1,10 @@
 {
-  "name": "heading-helper",
-  "homepage": "https://github.com/LoicGoyet/heading-helper",
+  "name": "trowel-heading",
+  "homepage": "https://github.com/Trowel/heading",
   "authors": [
     "Loïc Goyet <loic@appventus.com>"
   ],
-  "description": "Sass libray to quickly manage headings on css",
+  "description": "A trowel component to display headings",
   "main": "heading-helper.scss",
   "keywords": [
     "sass",
@@ -20,6 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "responsive-helper": "^1.1.1"
+    "trowel-responsive": "^1.1.1"
   }
 }
