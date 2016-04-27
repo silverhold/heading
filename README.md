@@ -4,7 +4,7 @@ Sass libray to quickly manage headings on css
 ## Getting Started
 You can download heading-helper via bower using the following command:
 ```shell
-$ bower install trowel-helper
+$ bower install trowel-heading
 ```
 
 
