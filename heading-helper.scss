@@ -2,32 +2,21 @@
 @import 'partials/functions';
 @import 'partials/mixins';
 
-#{heading-helper__selector-all-generator()} {
-    @include getAllHeadingDeclaration;
 
-    @if $heading__all--extend {
-        @extend #{$heading__all--extend};
+// Properties common to all headings
+@if map-has-key($headings, 'all') {
+    #{trwlheading-allselector-generator()} {
+        @include heading('all');
     }
 }
 
-
-@each $index, $map in $heading--defintions {
-    #{heading-helper__selector-generator($index)},
-    #{heading-helper__selector-generator($index, '.')},
-    %h#{$index} {
-        @include generateDeclarations($map);
-    }
-}
-
-@if $heading-responsive {
-    @each $breakpoint_key, $breakpoint_value in $breakpoints {
-        @each $index, $map in $heading--defintions {
-            #{heading-helper__selector-generator($index, '.', '--' + $breakpoint_key)},
-            %h#{$index}--#{$breakpoint_key} {
-                @include media-query($breakpoint_key, 'mobile-first') {
-                    @include generateDeclarations($map);
-                }
-            }
+// Generates each heading
+@each $key, $value in $headings {
+    @if trwlheading-isheading($key) {
+        #{trwlheading-selector-generator($key)},
+        #{trwlheading-selector-generator($key, '.')},
+        %h#{$key} {
+            @include heading($key);
         }
     }
 }

@@ -12,5 +12,6 @@ $visible-helpers: false;
 
 
 .test {
-    @include heading(1);
+    @include heading('all');
+    @include heading('h1');
 }

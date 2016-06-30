@@ -1,18 +1,21 @@
-@function heading-helper__selector-generator($lvl, $prefix: null, $suffix: null) {
-    @return unquote(#{$prefix}#{'h'}#{$lvl}#{$suffix});
+@function trwlheading-selector-generator($selector, $prefix: null) {
+    @return unquote(#{$prefix}#{$selector});
 }
 
-@function heading-helper__selector-all-generator() {
+@function trwlheading-allselector-generator() {
     $selector: '';
     @for $lvl from 1 through 6 {
         $selector: $selector + 'h#{$lvl}, .h#{$lvl}' + ', ';
-
-        @if $heading-responsive {
-            @each $breakpoint_key, $breakpoint_value in $breakpoints {
-                $selector: $selector + '.h#{$lvl}--#{$breakpoint_key}' + ', ';
-            }
-        }
     }
 
     @return $selector + '%headings';
+}
+
+@function trwlheading-isheading($string) {
+    @each $heading in ('h1', 'h2', 'h3', 'h5', 'h6') {
+        @if $heading == $string {
+            @return true;
+        }
+    }
+    @return false;
 }
