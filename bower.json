@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "trowel-responsive": "^1.1.1"
+    "trowel-responsive": "^1.1.1",
+    "trowel-bucket": "^1.4.0"
   }
 }
