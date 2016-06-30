@@ -1,15 +1,21 @@
-@mixin generateDeclarations($map) {
-    @each $property, $value in $map {
-        #{$property}: $value;
+@mixin heading($level) {
+    $map: map-get($headings, $level);
+    $properties: ();
+    $responsive: ();
+
+    @each $map-key, $map-value in $map {
+        @if is-breakpoint($map-key) {
+            $responsive: map-merge($responsive, ($map-key: $map-value));
+        } @else {
+            $properties: map-merge($properties, ($map-key: $map-value));
+        }
     }
-}
 
-@mixin getAllHeadingDeclaration {
-    @include generateDeclarations($heading__all--block);
-}
+    @include block-generator($properties);
 
-@mixin heading($lvl) {
-    $lvl-declarations: map-get($heading--defintions, $lvl);
-    @include getAllHeadingDeclaration;
-    @include generateDeclarations($lvl-declarations);
+    @each $breakpoint, $properties in $responsive {
+        @include media-query($breakpoint, 'mobile-first') {
+            @include block-generator($properties);
+        }
+    }
 }

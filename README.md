@@ -1,5 +1,5 @@
 # heading-helper
-Sass libray to quickly manage headings on css
+Sass library to quickly manage headings on css
 
 ## Getting Started
 You can download heading-helper via bower using the following command:
@@ -9,145 +9,183 @@ $ bower install trowel-heading
 
 
 ## Usage
-Include to your scss stylesheet the `heading-helper.scss` file. You also need to include before `heading-helper.scss` the `responsive-helper.scss` file from the [responsive-helper library](https://github.com/LoicGoyet/responsive-helper) if you want to enable the responsive helper class generation.
+Include to your scss stylesheet the `heading-helper.scss` file. You also need to include before `heading-helper.scss` the `responsive-helper.scss` file from the [trowel-responsive library](https://github.com/trowel/responsive).
 
-### Set Common property to all headings
-You can easily add couple property/values to the following selector :
+### The `$headings` variable
+The `trowel-heading` sass library has for purpose to quickly generate responsive heading class. To fit perfectly thoses classes to your needs, you will just have to override the `$headings` variable which you can find into the `partial/_parameters.scss` partial.
 
-```scss
-h1, h2, h3, h4, h5, h6 {}
-```
-
-You just need to redefine `$heading__all--block` list variable like this (showing in the same time !default value)
+The `$headings` variable is a map like just below :
 
 ```scss
-$heading__all--block: (
-    line-height: 1.3,
-) !default;
-```
-
-### Extends from 'all headings'
-If you want inside the statement with all headings selected, to extend a specific selector, just redefine the variable `$heading__all--extend` (set to false as !default).
-
-#### Example
-this
-```scss
-$heading__all--extend: '.selector';
-
-.selector {
-    margin-bottom: 10px;
-}
-```
-will compile into
-```css
-.selector, h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 10px;
-}
-```
-
-### Extends to 'all headings'
-In the other hand if you want the `.selector` to be extended into the the `h1, h2, h3, h4, h5, h6` use the extend placeholder `%headings` as in the example
-
-#### Example
-this
-```scss
-$heading__all--block: (
-    line-height: 1.3,
+$headings: (
+    'all': (
+        'line-height': 1.3,
+    ),
+    'h1': (
+        'font-size': 36px,
+    ),
+    'h2': (
+        'font-size': 30px,
+    ),
+    'h3': (
+        'font-size': 24px,
+    ),
+    'h4': (
+        'font-size': 18px,
+    ),
+    'h5': (
+        'font-size': 14px,
+    ),
+    'h6': (
+        'font-size': 12px,
+    ),
 );
+```
 
-.selector {
-    @extend %headings;
+The first key of the `$heading` map is `'all'` which has for value a map with a list of property/value common to all your headings.
+
+After the `'all'`, each heading element has a key with a map composed the same way: a list of property/value, but this time only for the heading in question.
+
+Here an example of what the `$heading` setted before will output in css
+
+```css
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    line-height: 1.3;
 }
-```
-will compile into
-```css
-h1, h2, h3, h4, h5, h6, .selector {
-  line-height: 1.3; }
-```
 
-### Set rules to single headings
-In order to set specific rule to specific heading, just redefine the `$heading--definitions` as shown below (presenting the default value):
-```scss
-$heading--defintions: (
-    1: (
-        font-size: 36px,
-    ),
-    2: (
-        font-size: 30px,
-    ),
-    3: (
-        font-size: 24px,
-    ),
-    4: (
-        font-size: 18px,
-    ),
-    5: (
-        font-size: 14px,
-    ),
-    6: (
-        font-size: 12px,
-    ),
-) !default;
-```
-
-this will generate for example :
-```css
 h1,
 .h1 {
     font-size: 36px;
-}
+};
 
 h2,
 .h2 {
     font-size: 30px;
-}
+};
 
 h3,
 .h3 {
     font-size: 24px;
-}
+};
 
 h4,
 .h4 {
     font-size: 18px;
-}
+};
 
 h5,
 .h5 {
     font-size: 14px;
-}
+};
 
 h6,
 .h6 {
     font-size: 12px;
-}
+};
 ```
 
+### Responsiveness
+In order to generate properties with specific breakpoint from [trowel-responsive library](https://github.com/trowel/responsive), you can into each sub-map of the `$headings` variable ('all', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6') set as key one of the breakpoint from the [`$breakpoints` map](https://github.com/Trowel/responsive/blob/master/_parameters.scss) and as value a list of property/value.
 
-### Generate responsive classes
-You can also make responsive headings by using the classes `.hx--y`. `x` being the heading level you want to use and `y` the breakpoint you want to use (with the mobile-first philosophy). The breakpoints available are setted with the [responsive-helper library](https://github.com/LoicGoyet/responsive-helper) that you have normaly included into your sass file before the `heading-helper.scss` file
+The media query are generated with the mixin [media-query](https://github.com/Trowel/responsive#using-mixin) and the 'mobile-first' philosophy.
 
-```html
-<h1 class="h5--xs h4--sm h3--md h2--lg h1--xl">This heading is responsive</h1>
-```
-
-If you want to avoid responsive classes generations, just turn `$heading-responsive` to `false`.
-
-
-### The heading mixin
-You can use the `@mixin heading($lvl)` to apply to your selector all the declarations setted to all the headings and to the heading level passed as parameter.
+So the current example :
 
 ```scss
-.label {
-    @include heading(6);
-}
+$breakpoints: (
+  'xs': ('min': 0, 'max': 374px),
+  'sm': ('min': 375px, 'max': 524px),
+  'md': ('min': 525px, 'max': 959px),
+  'lg': ('min': 960px, 'max': 1199px),
+  'xl': ('min': 1200px, 'max': '∞')
+);
+
+$headings: (
+    'all': (
+        'line-height': 1.3,
+        'md': (
+            'line-height': 1.4,
+        ),
+    ),
+    'h1': (
+        'letter-spacing': .125em,
+        'font-size': 30px,
+        'sm': (
+            'font-size': 32px,
+        ),
+        'md': (
+            'font-size': 34px,
+        ),
+        'lg': (
+            'font-size': 36px,
+        ),
+    ),
+    'h2': (
+        'font-size': 30px,
+    ),
+    'h3': (
+        'font-size': 24px,
+    ),
+    'h4': (
+        'font-size': 18px,
+    ),
+    'h5': (
+        'font-size': 14px,
+    ),
+    'h6': (
+        'font-size': 12px,
+    ),
+);
 ```
 
-will generate
-
+Generates this css :
 ```css
-.label {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     line-height: 1.3;
+}
+
+@media (min-width: 525px) {
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+        line-height: 1.4;
+    }
+}
+
+h1, .h1 {
+    letter-spacing: 0.125em;
+    font-size: 30px;
+}
+
+@media (min-width: 375px) {
+    h1, .h1 {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 525px) {
+    h1, .h1 {
+        font-size: 34px;
+    }
+}
+
+@media (min-width: 960px) {
+    h1, .h1 {
+        font-size: 36px;
+    }
+}
+
+h2, .h2 {
+    font-size: 30px;
+}
+
+h3, .h3 {
+    font-size: 24px;
+}
+
+h5, .h5 {
+    font-size: 14px;
+}
+
+h6, .h6 {
     font-size: 12px;
 }
 ```

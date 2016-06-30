@@ -6,10 +6,12 @@
 
 $hidden-helpers: false;
 $visible-helpers: false;
-@import '../bower_components/responsive-helper/responsive-helper';
+@import '../bower_components/trowel-bucket/bucket';
+@import '../bower_components/trowel-responsive/responsive-helper';
 @import '../heading-helper';
 
 
 .test {
-    @include heading(1);
+    @include heading('all');
+    @include heading('h1');
 }

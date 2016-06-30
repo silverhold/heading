@@ -1,28 +1,46 @@
-$heading__all--block: (
-    line-height: 1.3,
+$headings: (
+    'all': (
+        'font-family': inherit,
+        'font-weight': 500,
+        'line-height': 1.1,
+        'color': inherit,
+        'margin-top': 20px,
+        'margin-bottom': 10px,
+    ),
+    'h1': (
+        'font-size': 30px,
+        'sm': (
+            'font-size': 32px,
+        ),
+        'md': (
+            'font-size': 34px,
+        ),
+        'lg': (
+            'font-size': 36px,
+        ),
+    ),
+    'h2': (
+        'font-size': 26px,
+        'sm': (
+            'font-size': 28px,
+        ),
+        'md': (
+            'font-size': 30px,
+        ),
+    ),
+    'h3': (
+        'font-size': 22px,
+        'sm': (
+            'font-size': 24px,
+        ),
+    ),
+    'h4': (
+        'font-size': 18px,
+    ),
+    'h5': (
+        'font-size': 14px,
+    ),
+    'h6': (
+        'font-size': 12px,
+    ),
 ) !default;
-
-$heading--defintions: (
-    1: (
-        font-size: 36px,
-    ),
-    2: (
-        font-size: 30px,
-    ),
-    3: (
-        font-size: 24px,
-    ),
-    4: (
-        font-size: 18px,
-    ),
-    5: (
-        font-size: 14px,
-    ),
-    6: (
-        font-size: 12px,
-    ),
-) !default;
-
-$heading-responsive: true !default;
-
-$heading__all--extend: false !default;
