@@ -17,29 +17,29 @@ The `trowel-heading` sass library has for purpose to quickly generate responsive
 The `$headings` variable is a map like just below :
 
 ```scss
-    $headings: (
-        'all': (
-            'line-height': 1.3,
-        ),
-        'h1': (
-            'font-size': 36px,
-        ),
-        'h2': (
-            'font-size': 30px,
-        ),
-        'h3': (
-            'font-size': 24px,
-        ),
-        'h4': (
-            'font-size': 18px,
-        ),
-        'h5': (
-            'font-size': 14px,
-        ),
-        'h6': (
-            'font-size': 12px,
-        ),
-    );
+$headings: (
+    'all': (
+        'line-height': 1.3,
+    ),
+    'h1': (
+        'font-size': 36px,
+    ),
+    'h2': (
+        'font-size': 30px,
+    ),
+    'h3': (
+        'font-size': 24px,
+    ),
+    'h4': (
+        'font-size': 18px,
+    ),
+    'h5': (
+        'font-size': 14px,
+    ),
+    'h6': (
+        'font-size': 12px,
+    ),
+);
 ```
 
 The first key of the `$heading` map is `'all'` which has for value a map with a list of property/value common to all your headings.
@@ -135,7 +135,7 @@ $headings: (
     'h6': (
         'font-size': 12px,
     ),
-) !default;
+);
 ```
 
 Generates this css :
