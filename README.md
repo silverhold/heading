@@ -4,15 +4,15 @@ Sass library to quickly manage headings on css
 ## Getting Started
 You can download heading-helper via bower using the following command:
 ```shell
-$ bower install trowel-heading
+$ bower install silverhold-heading
 ```
 
 
 ## Usage
-Include to your scss stylesheet the `heading-helper.scss` file. You also need to include before `heading-helper.scss` the `responsive-helper.scss` file from the [trowel-responsive library](https://github.com/trowel/responsive).
+Include to your scss stylesheet the `heading-helper.scss` file. You also need to include before `heading-helper.scss` the `responsive-helper.scss` file from the [silverhold-responsive library](https://github.com/silverhold/responsive).
 
 ### The `$headings` variable
-The `trowel-heading` sass library has for purpose to quickly generate responsive heading class. To fit perfectly thoses classes to your needs, you will just have to override the `$headings` variable which you can find into the `partial/_parameters.scss` partial.
+The `silverhold-heading` sass library has for purpose to quickly generate responsive heading class. To fit perfectly thoses classes to your needs, you will just have to override the `$headings` variable which you can find into the `partial/_parameters.scss` partial.
 
 The `$headings` variable is a map like just below :
 
@@ -85,9 +85,9 @@ h6,
 ```
 
 ### Responsiveness
-In order to generate properties with specific breakpoint from [trowel-responsive library](https://github.com/trowel/responsive), you can into each sub-map of the `$headings` variable ('all', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6') set as key one of the breakpoint from the [`$breakpoints` map](https://github.com/Trowel/responsive/blob/master/_parameters.scss) and as value a list of property/value.
+In order to generate properties with specific breakpoint from [silverhold-responsive library](https://github.com/silverhold/responsive), you can into each sub-map of the `$headings` variable ('all', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6') set as key one of the breakpoint from the [`$breakpoints` map](https://github.com/silverhold/responsive/blob/master/_parameters.scss) and as value a list of property/value.
 
-The media query are generated with the mixin [media-query](https://github.com/Trowel/responsive#using-mixin) and the 'mobile-first' philosophy.
+The media query are generated with the mixin [media-query](https://github.com/silverhold/responsive#using-mixin) and the 'mobile-first' philosophy.
 
 So the current example :
 

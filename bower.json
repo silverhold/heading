@@ -1,10 +1,10 @@
 {
-  "name": "trowel-heading",
-  "homepage": "https://github.com/Trowel/heading",
+  "name": "silverhold-heading",
+  "homepage": "https://github.com/silverhold/heading",
   "authors": [
     "Loïc Goyet <loic@appventus.com>"
   ],
-  "description": "A trowel component to display headings",
+  "description": "A silverhold component to display headings",
   "main": "heading-helper.scss",
   "keywords": [
     "sass",
@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "trowel-responsive": "^1.2.1",
-    "trowel-bucket": "^1.4.3"
+    "silverhold-responsive": "^1.2.1",
+    "silverhold-bucket": "^1.4.3"
   }
 }
